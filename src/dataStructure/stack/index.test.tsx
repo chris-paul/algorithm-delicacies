@@ -1,42 +1,43 @@
-import stack from './index';
+import Stack from './index';
 
 describe('stack', () => {
-  let arr = stack;
+  let stack: Stack<number>;
 
-  afterEach(() => {
-    arr = [...stack];
+  beforeEach(() => {
+    stack = new Stack<number>();
   });
 
-  test('An uninitialized stack is empty', () => {
-    expect(arr).toHaveLength(0);
+  test('An uninitialized stack is empty and the size is 0', () => {
+    expect(stack.size()).toBe(0);
+    expect(stack.empty()).toBeTruthy();
   });
 
   test('push an item on the stack and pop it off ', () => {
-    arr.push(1);
-    expect(arr.pop()).toBe(1);
+    stack.push(1);
+    expect(stack.pop()).toBe(1);
   });
 
   test('When pushing multiple distinct items on the stack, repeated popping returns them in reverse order', () => {
-    arr.push(1);
-    arr.push(2);
-    const firstPop = arr.pop();
+    stack.push(1);
+    stack.push(2);
+    const firstPop = stack.pop();
     expect(firstPop).toBe(2);
-    const nextPop = arr.pop();
+    const nextPop = stack.pop();
     expect(nextPop).toBe(1);
   });
 
   test('A stack that has items pushed and subsequently removed is empty', () => {
-    arr.push(1);
-    arr.pop();
-    expect(arr).toHaveLength(0);
+    stack.push(1);
+    stack.pop();
+    expect(stack.size()).toBe(0);
   });
 
   test('Attempting to pop when there are no items results in the documented type of failure', () => {
-    expect(arr.pop()).toBe(undefined);
+    expect(stack.pop()).toBe(undefined);
   });
 
   test('A stack that has an item pushed is non-empty.', () => {
-    arr.push(1);
-    expect(arr).not.toHaveLength(0);
+    stack.push(1);
+    expect(stack.size()).not.toBe(0);
   });
 });

@@ -5,16 +5,19 @@
  * 时间复杂度O(n)
  * 空间复杂复杂度O(n)
  */
+import Queue from '@dataStructure/queue/index';
 
 class RecentCounter {
-  queue: number[] = [];
+  queue = new Queue<number>();
 
   ping(t: number): number {
     this.queue.push(t);
-    while (this.queue[0] < t - 3000) {
+    // 已经push
+    while (Number(this.queue.peek()) < t - 3000) {
       this.queue.shift();
     }
-    return this.queue.length;
+
+    return this.queue.size();
   }
 }
 
