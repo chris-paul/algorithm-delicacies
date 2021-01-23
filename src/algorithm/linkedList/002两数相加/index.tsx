@@ -2,12 +2,18 @@
  * @Author: 廉恒凯
  * @Date: 2021-01-23 16:56:59
  * @LastEditors: 廉恒凯
- * @LastEditTime: 2021-01-23 17:50:09
+ * @LastEditTime: 2021-01-23 17:53:03
  * @Description: file content
  */
 import { LinkedListNode } from '@dataStructure/linkedList/singleLinkedList/index';
 
 type ListNode = LinkedListNode<number>;
+/**
+ * 时间负责度 O(n)
+ * 空间复杂度 O(n)
+ * @param l1
+ * @param l2
+ */
 const twoSum = (l1: ListNode | null, l2: ListNode | null): ListNode | null => {
   const node = new LinkedListNode(0);
   let carry = 0;
