@@ -2,7 +2,7 @@
  * @Author: 廉恒凯
  * @Date: 2021-01-17 21:03:02
  * @LastEditors: 廉恒凯
- * @LastEditTime: 2021-01-23 15:37:44
+ * @LastEditTime: 2021-01-23 17:21:03
  * @Description: file content
  */
 /* eslint-disable no-param-reassign */
@@ -14,26 +14,26 @@
 class LinkedListNode<T> {
   public next: LinkedListNode<T> | null = null;
 
-  constructor(public data: T) {
-    this.data = data;
+  constructor(public val: T) {
+    this.val = val;
   }
 }
 
 interface ILinkedList<T> {
-  insertInBegin(data: T): LinkedListNode<T>;
-  insertAtEnd(data: T): LinkedListNode<T>;
+  insertInBegin(val: T): LinkedListNode<T>;
+  insertAtEnd(val: T): LinkedListNode<T>;
   // deleteNode(node: LinkedListNode<T>): void;
-  deleteNodeByData(data: T): void;
+  deleteNodeByval(val: T): void;
   traverse(): T[];
   size(): number;
-  search(data: T): LinkedListNode<T> | null;
+  search(val: T): LinkedListNode<T> | null;
 }
 
 class LinkedList<T> implements ILinkedList<T> {
   private head: LinkedListNode<T> | null = null;
 
-  public insertInBegin(data: T): LinkedListNode<T> {
-    const node = new LinkedListNode(data);
+  public insertInBegin(val: T): LinkedListNode<T> {
+    const node = new LinkedListNode(val);
     if (!this.head) {
       this.head = node;
     } else {
@@ -43,8 +43,8 @@ class LinkedList<T> implements ILinkedList<T> {
     return node;
   }
 
-  public insertAtEnd(data: T): LinkedListNode<T> {
-    const node = new LinkedListNode(data);
+  public insertAtEnd(val: T): LinkedListNode<T> {
+    const node = new LinkedListNode(val);
     if (!this.head) {
       this.head = node;
     } else {
@@ -57,13 +57,13 @@ class LinkedList<T> implements ILinkedList<T> {
     return node;
   }
 
-  public deleteNodeByData(data: T): void {
+  public deleteNodeByval(val: T): void {
     if (!this.head) return;
     const dummy = new LinkedListNode<unknown>(null) as LinkedListNode<T>;
     let pre: LinkedListNode<T> = dummy;
     let cur: LinkedListNode<T> | null = this.head;
     dummy.next = this.head;
-    while (cur !== null && cur.data !== data) {
+    while (cur !== null && cur.val !== val) {
       pre = cur;
       cur = cur.next;
     }
@@ -78,7 +78,7 @@ class LinkedList<T> implements ILinkedList<T> {
     }
 
     const addToArray = (node: LinkedListNode<T>): T[] => {
-      array.push(node.data);
+      array.push(node.val);
       return node.next ? addToArray(node.next) : array;
     };
     return addToArray(this.head);
@@ -88,9 +88,9 @@ class LinkedList<T> implements ILinkedList<T> {
     return this.traverse().length;
   }
 
-  public search(data: T): LinkedListNode<T> | null {
+  public search(val: T): LinkedListNode<T> | null {
     const checkNext = (node: LinkedListNode<T>): LinkedListNode<T> | null => {
-      if (node.data === data) {
+      if (node.val === val) {
         return node;
       }
       return node.next ? checkNext(node.next) : null;

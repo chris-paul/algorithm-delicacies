@@ -2,11 +2,11 @@ import { LinkedList, LinkedListNode } from './index';
 
 describe(' linkedListNode and linkedList ', () => {
   describe('linkedListNode', () => {
-    test('create linkedListNode should get head Node, and the next point is null, the data should get Correct value', () => {
+    test('create linkedListNode should get head Node, and the next point is null, the val should get Correct value', () => {
       const node = new LinkedListNode(1);
       expect(node).not.toBe(null);
       expect(node.next).toBeNull();
-      expect(node.data).toBe(1);
+      expect(node.val).toBe(1);
     });
   });
 
@@ -57,43 +57,43 @@ describe(' linkedListNode and linkedList ', () => {
     });
   });
 
-  describe('delete Node By Data', () => {
-    test('delete head Node List data', () => {
+  describe('delete Node By val', () => {
+    test('delete head Node List val', () => {
       const node = new LinkedList();
       node.insertInBegin(1);
       node.insertAtEnd(2);
-      node.deleteNodeByData(1);
+      node.deleteNodeByval(1);
       expect(node.traverse()).toEqual([2]);
     });
 
-    test('delete all data should empty', () => {
+    test('delete all val should empty', () => {
       const node = new LinkedList();
       node.insertInBegin(1);
       node.insertAtEnd(2);
-      node.deleteNodeByData(1);
-      node.deleteNodeByData(2);
+      node.deleteNodeByval(1);
+      node.deleteNodeByval(2);
       expect(node.size()).toBe(0);
     });
 
-    test('delete the data that does not exist in the linked list, and the length of the linked list remains unchanged', () => {
+    test('delete the val that does not exist in the linked list, and the length of the linked list remains unchanged', () => {
       const node = new LinkedList();
       node.insertInBegin(1);
       node.insertAtEnd(2);
       const size = node.size();
-      node.deleteNodeByData(3);
+      node.deleteNodeByval(3);
       expect(node.size()).toBe(size);
     });
   });
 
-  describe('search data from linkedList', () => {
-    test('should get correct Node if the data exists', () => {
+  describe('search val from linkedList', () => {
+    test('should get correct Node if the val exists', () => {
       const node = new LinkedList();
       const firstNode = node.insertInBegin(1);
       const searchNode = node.search(1);
       expect(searchNode).toBe(firstNode);
     });
 
-    test('if there is no data in the linked list should return null', () => {
+    test('if there is no val in the linked list should return null', () => {
       const node = new LinkedList();
       const searchNode = node.search(3);
       expect(searchNode).toBeNull();
