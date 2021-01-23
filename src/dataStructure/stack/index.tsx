@@ -1,5 +1,3 @@
-import { threadId } from 'worker_threads';
-
 class Stack<T> {
   private data: T[] = [];
 
