@@ -1,3 +1,10 @@
+/*
+ * @Author: 廉恒凯
+ * @Date: 2021-01-10 21:20:14
+ * @LastEditors: 廉恒凯
+ * @LastEditTime: 2021-01-27 20:56:53
+ * @Description: file content
+ */
 class Stack<T> {
   private data: T[] = [];
 
@@ -10,6 +17,12 @@ class Stack<T> {
   size = (): number => this.data.length;
 
   empty = (): boolean => this.data.length === 0;
+
+  clear = (): void => {
+    this.data = [];
+  };
+
+  toString = (): string => this.data.toString();
 }
 
 export default Stack;
