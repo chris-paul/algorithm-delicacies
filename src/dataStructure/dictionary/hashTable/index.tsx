@@ -16,7 +16,7 @@ export default class HashTable<K, V> implements Map<K, V> {
   }
 
   // 生成哈希码
-  private hashCode(key: K): number {
+  hashCode(key: K): number {
     return this.djb2HashCode(key);
   }
 
@@ -52,7 +52,12 @@ export default class HashTable<K, V> implements Map<K, V> {
   }
 
   set(key: K, value: V): boolean {
-    if (key != null && value != null) {
+    if (
+      key !== null &&
+      value !== null &&
+      key !== undefined &&
+      value !== undefined
+    ) {
       const position = this.hashCode(key);
       this.table[position] = new KeyValuePairs(key, value);
       return true;
@@ -62,7 +67,7 @@ export default class HashTable<K, V> implements Map<K, V> {
 
   // 判断字典中是否包含某个key
   hasKey(key: K): boolean {
-    return this.table[this.hashCode(key)] != null;
+    return this.table[this.hashCode(key)] !== undefined;
   }
 
   keys(): K[] {

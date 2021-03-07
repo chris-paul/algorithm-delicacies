@@ -14,8 +14,10 @@ describe(' linkedListNode and linkedList ', () => {
     test('An initialized LinkedList the head is null, and the LinkedList is empty', () => {
       const node = new LinkedList();
       expect(node.size()).toBe(0);
+      expect(node.isEmpty()).toBeTruthy();
       node.insertInBegin(1);
       expect(node.size()).toBe(1);
+      expect(node.isEmpty()).toBeFalsy();
     });
   });
 
@@ -97,6 +99,15 @@ describe(' linkedListNode and linkedList ', () => {
       const node = new LinkedList();
       const searchNode = node.search(3);
       expect(searchNode).toBeNull();
+    });
+  });
+
+  describe('Head node', () => {
+    test('should get correct Node ', () => {
+      const node = new LinkedList();
+      expect(node.getHead()).toBeNull();
+      const firstNode = node.insertInBegin(1);
+      expect(node.getHead()).toBe(firstNode);
     });
   });
 });

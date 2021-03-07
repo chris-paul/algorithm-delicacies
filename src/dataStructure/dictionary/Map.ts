@@ -25,7 +25,6 @@ export interface Map<K, V> {
   put?(key: K, value: V): boolean;
   remove(key: K): boolean;
   get(key: K): V | undefined;
-  keyValues(): KeyValuePairs<K, V>[];
   keys(): K[];
   values(): V[];
   forEach(callbackFn: (key: K, value: V) => any): void;

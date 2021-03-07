@@ -27,6 +27,8 @@ interface ILinkedList<T> {
   traverse(): T[];
   size(): number;
   search(val: T): LinkedListNode<T> | null;
+  getHead(): LinkedListNode<T> | null;
+  isEmpty(): boolean;
 }
 
 class LinkedList<T> implements ILinkedList<T> {
@@ -88,6 +90,10 @@ class LinkedList<T> implements ILinkedList<T> {
     return this.traverse().length;
   }
 
+  public isEmpty(): boolean {
+    return this.traverse().length === 0;
+  }
+
   public search(val: T): LinkedListNode<T> | null {
     const checkNext = (node: LinkedListNode<T>): LinkedListNode<T> | null => {
       if (node.val === val) {
@@ -97,6 +103,10 @@ class LinkedList<T> implements ILinkedList<T> {
     };
 
     return this.head ? checkNext(this.head) : null;
+  }
+
+  public getHead(): LinkedListNode<T> | null {
+    return this.head;
   }
 }
 
