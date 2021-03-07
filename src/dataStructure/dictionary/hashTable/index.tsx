@@ -9,7 +9,7 @@ import { KeyValuePairs, Map } from '../Map';
 import customToString from '../../../utils';
 
 export default class HashTable<K, V> implements Map<K, V> {
-  private table: KeyValuePairs<K, V>[];
+  protected table: KeyValuePairs<K, V>[];
 
   constructor(private toStrFn: (key: K) => string = customToString) {
     this.table = [];
