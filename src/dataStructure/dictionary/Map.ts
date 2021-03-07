@@ -23,7 +23,6 @@ export interface Map<K, V> {
   hasKey(key: K): boolean;
   set?(key: K, value: V): boolean;
   put?(key: K, value: V): boolean;
-  hashCode?(key: K): number;
   remove(key: K): boolean;
   get(key: K): V | undefined;
   keyValues(): KeyValuePairs<K, V>[];
