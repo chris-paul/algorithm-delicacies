@@ -7,7 +7,7 @@
  */
 import Queue from './index';
 
-describe('queue', () => {
+describe('normalQueue', () => {
   let queue: Queue<number>;
 
   beforeEach(() => {
