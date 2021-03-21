@@ -2,7 +2,7 @@
  * @Author: 廉恒凯
  * @Date: 2021-03-14 10:18:38
  * @LastEditors: 廉恒凯
- * @LastEditTime: 2021-03-17 21:17:23
+ * @LastEditTime: 2021-03-21 16:25:56
  * @Description: file content
  */
 
@@ -29,12 +29,12 @@ const create = () => {
   root.right.left.left = new TreeNode(7);
   return root;
 };
-describe('maxDepth', () => {
+describe('levelOrder', () => {
   const tree: TreeNode<number> = create();
-  test('maxDepth', () => {
+  test('levelOrder', () => {
     expect(levelOrder(tree)).toEqual([[1], [2, 3], [4, 5, 6, 8], [7]]);
     expect(levelOrder(undefined)).toEqual([]);
     const root = new TreeNode(1);
-    expect(levelOrder(root)).toEqual([1]);
+    expect(levelOrder(root)).toEqual([[1]]);
   });
 });

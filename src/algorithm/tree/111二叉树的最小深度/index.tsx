@@ -2,17 +2,17 @@
  * @Author: 廉恒凯
  * @Date: 2021-03-15 22:11:15
  * @LastEditors: 廉恒凯
- * @LastEditTime: 2021-03-17 20:59:55
+ * @LastEditTime: 2021-03-20 22:50:00
  * @Description: file content
  */
 import Node from '@dataStructure/tree/treeNode';
 
-type TreeNode = Node<number> | undefined;
+type TreeNode = Node<number> | null;
 
 function minDepth(root: TreeNode): number {
   if (!root) return 0;
   const queue: [TreeNode, number][] = [[root, 1]];
-  while (queue.length > 1) {
+  while (queue.length) {
     const [current, res] = queue.shift() as [TreeNode, number];
     if (current && !current.left && !current.right) {
       return res;
@@ -23,7 +23,7 @@ function minDepth(root: TreeNode): number {
   return 0;
 }
 
-function minDepthRecursive(root: TreeNode | undefined): number {
+function minDepthRecursive(root: TreeNode | null): number {
   if (!root) {
     return 0;
   }

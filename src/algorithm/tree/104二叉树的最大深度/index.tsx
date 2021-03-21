@@ -3,7 +3,7 @@
  * @Author: 廉恒凯
  * @Date: 2021-03-15 21:12:41
  * @LastEditors: 廉恒凯
- * @LastEditTime: 2021-03-15 22:00:45
+ * @LastEditTime: 2021-03-21 17:43:23
  * @Description: file content
  */
 import TreeNode from '@dataStructure/tree/treeNode';
@@ -14,7 +14,7 @@ import TreeNode from '@dataStructure/tree/treeNode';
  * @param root
  * @returns
  */
-const maxDepth = (root: TreeNode<number> | undefined): number => {
+const maxDepth = (root: TreeNode<number> | null): number => {
   if (!root) return 0;
   const maxLeft = maxDepth(root.left) + 1;
   const maxRight = maxDepth(root.right) + 1;
