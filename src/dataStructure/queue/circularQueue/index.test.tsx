@@ -2,7 +2,7 @@
  * @Author: 廉恒凯
  * @Date: 2021-01-17 10:28:40
  * @LastEditors: 廉恒凯
- * @LastEditTime: 2021-02-22 21:38:02
+ * @LastEditTime: 2021-04-05 17:39:02
  * @Description: file content
  */
 import CircularQueue from './index';
@@ -52,7 +52,7 @@ describe('deque', () => {
   });
 
   test('The empty queue deQueue should return undefined', () => {
-    expect(deque.deQueue()).toBeUndefined();
+    expect(deque.deQueue()).toBeNull();
   });
 
   test('It should get leader element when peekFront called', () => {

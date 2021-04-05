@@ -2,17 +2,19 @@
  * @Author: 廉恒凯
  * @Date: 2021-01-31 21:08:23
  * @LastEditors: 廉恒凯
- * @LastEditTime: 2021-02-22 21:12:52
+ * @LastEditTime: 2021-04-05 17:29:14
  * @Description: file content
  */
+import { isDefined } from '@utils/index';
+
 interface ICircularQueue<T> {
-  peekFront(): T | undefined; // 获取循环队列队队首元素
+  peekFront(): T | null; // 获取循环队列队队首元素
   enQueue(value: T): boolean; // 在双端队列尾端添加元素
-  deQueue(): T | undefined; // 从循环队列中删除一个元素。如果成功删除则返回真。
+  deQueue(): T | null; // 从循环队列中删除一个元素。如果成功删除则返回真。
   isFull(): boolean; // 检查循环队列是否已满
   empty(): boolean; // 检查循环队列是否为空。
   size(): number; // 检查循环队列元素的数量。
-  peekBack(): T | undefined; // 在队列前端删除元素
+  peekBack(): T | null; // 在队列前端删除元素
   toString(): string; // 返回队列元素的组成的字符串
 }
 
@@ -40,10 +42,9 @@ class CircularQueue<T> implements ICircularQueue<T> {
     this.count = 0;
   }
 
-  peekFront = (): T | undefined => this.data[this.head];
+  peekFront = (): T | null => this.data[this.head];
 
-  peekBack = (): T | undefined =>
-    this.data[(this.tail - 1 + this.len) % this.len];
+  peekBack = (): T | null => this.data[(this.tail - 1 + this.len) % this.len];
 
   enQueue = (value: T): boolean => {
     if (this.isFull()) return false;
@@ -53,15 +54,15 @@ class CircularQueue<T> implements ICircularQueue<T> {
     return true;
   };
 
-  deQueue = (): T | undefined => {
+  deQueue = (): T | null => {
     const value = this.data[this.head];
     this.head = (this.head + 1) % this.len;
     this.count = this.empty() ? 0 : this.count - 1;
-    return value;
+    return !isDefined(value) ? null : value;
   };
 
   empty(): boolean {
-    return this.head === this.tail && !this.peekFront();
+    return this.head === this.tail && this.peekFront() === undefined;
   }
 
   size(): number {

@@ -2,7 +2,7 @@
  * @Author: 廉恒凯
  * @Date: 2021-01-17 10:28:40
  * @LastEditors: 廉恒凯
- * @LastEditTime: 2021-01-31 12:16:35
+ * @LastEditTime: 2021-04-05 17:38:48
  * @Description: file content
  */
 import Queue from './index';
@@ -40,7 +40,7 @@ describe('normalQueue', () => {
   });
 
   test('Attempting to unshift when there are no items results in the documented type of failure', () => {
-    expect(queue.dequeue()).toBe(undefined);
+    expect(queue.dequeue()).toBeNull();
   });
 
   test('A queue that has an item pushed is non-empty.', () => {
