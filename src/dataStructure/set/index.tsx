@@ -2,7 +2,7 @@
  * @Author: 廉恒凯
  * @Date: 2021-01-24 14:56:19
  * @LastEditors: 廉恒凯
- * @LastEditTime: 2021-02-27 14:15:31
+ * @LastEditTime: 2021-04-05 15:48:43
  * @Description: file content
  */
 interface ISet<T> {
@@ -20,46 +20,46 @@ export default class CustomerSet<T> implements ISet<T> {
     this.items = new Map();
   }
 
-  has(element: T): boolean {
+  has = (element: T): boolean => {
     return this.items.has(element);
-  }
+  };
 
-  add(element: T): this {
+  add = (element: T): this => {
     if (!this.has(element)) {
       this.items.set(element, element);
     }
     return this;
-  }
+  };
 
-  delete(element: T): boolean {
+  delete = (element: T): boolean => {
     if (this.has(element)) {
       this.items.delete(element);
       return true;
     }
     return false;
-  }
+  };
 
-  clear(): void {
+  clear = (): void => {
     this.items.clear();
-  }
+  };
 
-  size(): number {
+  size = (): number => {
     return this.items.size;
-  }
+  };
 
-  values(): Array<T> {
+  values = (): Array<T> => {
     return [...this.items.values()];
-  }
+  };
 
-  union(otherSet: CustomerSet<T>): CustomerSet<T> {
+  union = (otherSet: CustomerSet<T>): CustomerSet<T> => {
     // 声明并集变量
     const unionSet = new CustomerSet<T>();
     this.values().forEach((value) => unionSet.add(value));
     otherSet.values().forEach((value) => unionSet.add(value));
     return unionSet;
-  }
+  };
 
-  intersection(otherSet: CustomerSet<T>): CustomerSet<T> {
+  intersection = (otherSet: CustomerSet<T>): CustomerSet<T> => {
     const intersectionSet = new CustomerSet<T>();
     // 获取当前实例集合中的元素
     const values = this.values();
@@ -74,9 +74,9 @@ export default class CustomerSet<T> implements ISet<T> {
 
     // 返回交集集合
     return intersectionSet;
-  }
+  };
 
-  difference(otherSet: CustomerSet<T>): CustomerSet<T> {
+  difference = (otherSet: CustomerSet<T>): CustomerSet<T> => {
     // 声明差集变量
     const differenceSet = new CustomerSet<T>();
     // 遍历当前实例中的集合
@@ -88,12 +88,12 @@ export default class CustomerSet<T> implements ISet<T> {
     });
     // 返回差集变量
     return differenceSet;
-  }
+  };
 
-  isSubsetOf(otherSet: CustomerSet<T>): boolean {
+  isSubsetOf = (otherSet: CustomerSet<T>): boolean => {
     if (this.size() > otherSet.size()) {
       return false;
     }
     return this.values().every((value) => otherSet.has(value));
-  }
+  };
 }
