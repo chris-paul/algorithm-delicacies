@@ -2,7 +2,7 @@
  * @Author: 廉恒凯
  * @Date: 2021-02-28 15:49:41
  * @LastEditors: 廉恒凯
- * @LastEditTime: 2021-02-28 19:47:48
+ * @LastEditTime: 2021-04-05 20:25:51
  * @Description: file content
  */
 
@@ -24,7 +24,7 @@ export interface Map<K, V> {
   set?(key: K, value: V): boolean;
   put?(key: K, value: V): boolean;
   remove(key: K): boolean;
-  get(key: K): V | undefined;
+  get(key: K): V | null;
   keys(): K[];
   values(): V[];
   forEach(callbackFn: (key: K, value: V) => any): void;

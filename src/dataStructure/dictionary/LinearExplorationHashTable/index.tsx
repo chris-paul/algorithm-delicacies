@@ -1,3 +1,10 @@
+/*
+ * @Author: 廉恒凯
+ * @Date: 2021-03-07 17:57:56
+ * @LastEditors: 廉恒凯
+ * @LastEditTime: 2021-04-05 16:04:55
+ * @Description: file content
+ */
 import HashTable from '@dataStructure/dictionary/hashTable';
 import { KeyValuePairs } from '../Map';
 
@@ -12,16 +19,14 @@ export default class LinearExplorationHashTable<K, V> extends HashTable<K, V> {
   set(key: K, value: V): boolean {
     if (key === null || value === null) return false;
     const position = this.hashCode(key);
-    //  如果当前key等于hashCode求得的key 直接更新,否则新增
     const index = this.getIndex(key);
-    // 如果当前key等于hashCode求得的key并且值存在 那么就是更细
+    // 如果需要插入的位置已经有值,那么说明当前key已经存在直接更新
     if (this.table[index] !== undefined) {
       this.table[position].value = value;
     } else {
       this.table[index] = new KeyValuePairs(key, value);
       this.count += 1;
     }
-    // }
     return true;
   }
 
