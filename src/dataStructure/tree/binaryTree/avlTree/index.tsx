@@ -4,10 +4,11 @@
  * @Author: 廉恒凯
  * @Date: 2021-03-20 22:54:51
  * @LastEditors: 廉恒凯
- * @LastEditTime: 2021-03-21 21:07:40
+ * @LastEditTime: 2021-04-05 21:29:26
  * @Description: file content
  */
 
+import { defaultCompare } from '@utils/index';
 import BinarySearchTree from '../binarySearchTree';
 import TreeNode from '../../treeNode';
 
@@ -20,19 +21,9 @@ enum BalanceFactor {
   UNBALANCED_LEFT = 5,
 }
 
-const defaultCompare = <T,>(a: T, b: T): number => {
-  if (a === b) {
-    return 0;
-  }
-  if (a > b) {
-    return 1;
-  }
-  return -1;
-};
-
 export default class AVLTree<T> extends BinarySearchTree<T> {
   // 计算节点高度
-  private getNodeHeight(node: TreeNode<T> | null): number {
+  private getNodeHeight = (node: TreeNode<T> | null): number => {
     if (node === null) {
       return -1;
     }
@@ -40,7 +31,7 @@ export default class AVLTree<T> extends BinarySearchTree<T> {
       Math.max(this.getNodeHeight(node.left), this.getNodeHeight(node.right)) +
       1
     );
-  }
+  };
 
   private getBalanceFactor(node: TreeNode<T> | null) {
     // 计算差值
@@ -64,9 +55,9 @@ export default class AVLTree<T> extends BinarySearchTree<T> {
   }
 
   // 向树AVL树中插入节点
-  insert(val: T): void {
+  insert = (val: T): void => {
     this.root = this.insertNode(this.root, val);
-  }
+  };
 
   /**
    * 插入节点f导致失衡, 以a为轴进行右旋转,传入的参数是b节点(也就是一棵树最近的失去平衡的节点)
@@ -140,7 +131,18 @@ export default class AVLTree<T> extends BinarySearchTree<T> {
     return this.rotationRR(node);
   }
 
-  protected insertNode(node: TreeNode<T> | null, val: T): TreeNode<T> | null {
+  minNode = (node: TreeNode<T> | null): TreeNode<T> | null => {
+    let current = node;
+    while (current !== null && current.left !== null) {
+      current = current.left;
+    }
+    return current;
+  };
+
+  protected insertNode = (
+    node: TreeNode<T> | null,
+    val: T
+  ): TreeNode<T> | null => {
     if (node === null) {
       return new TreeNode(val);
     }
@@ -152,7 +154,7 @@ export default class AVLTree<T> extends BinarySearchTree<T> {
       return node; // 重复的键
     }
     return this.balanceNode(node, val);
-  }
+  };
 
   private balanceNode(node: TreeNode<T> | null, val: T): null | TreeNode<T> {
     // 开始计算是否平衡
@@ -185,7 +187,10 @@ export default class AVLTree<T> extends BinarySearchTree<T> {
   }
 
   // 删除节点 最好的方式是使用递归 一层层的返回树的节点去判断是否需要旋转
-  protected removeNode(node: TreeNode<T> | null, val: T): null | TreeNode<T> {
+  protected removeNode = (
+    node: TreeNode<T> | null,
+    val: T
+  ): null | TreeNode<T> => {
     if (node === null) {
       return null;
     }
@@ -228,16 +233,16 @@ export default class AVLTree<T> extends BinarySearchTree<T> {
        *             / \
        *            14 16
        */
-      const aux = super.minNode(node.right) as TreeNode<T>; // 当找到了要移除的节点后,需要找到它右边子树最小的节点,即它的继承者
+      const aux = this.minNode(node.right) as TreeNode<T>; // 当找到了要移除的节点后,需要找到它右边子树最小的节点,即它的继承者
       node.val = aux.val;
       node.right = this.removeNode(node.right, aux.val); // 移除右侧子树中的最小节点
     }
     // return node;
     return this.balanceNode(node, val);
-  }
+  };
 
   // 删除节点函数
-  remove(val: T): void {
+  remove = (val: T): void => {
     this.root = this.removeNode(this.root, val);
-  }
+  };
 }

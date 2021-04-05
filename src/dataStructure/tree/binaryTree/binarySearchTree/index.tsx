@@ -5,20 +5,11 @@
  * @Author: 廉恒凯
  * @Date: 2021-03-18 21:38:35
  * @LastEditors: 廉恒凯
- * @LastEditTime: 2021-03-21 21:19:37
+ * @LastEditTime: 2021-04-05 21:39:43
  * @Description: file content
  */
+import { defaultCompare } from '@utils/index';
 import TreeNode from '../../treeNode';
-
-const defaultCompare = <T,>(a: T, b: T): number => {
-  if (a === b) {
-    return 0;
-  }
-  if (a > b) {
-    return 1;
-  }
-  return -1;
-};
 
 export default class BinarySearchTree<T> {
   protected root: TreeNode<T> | null;
@@ -27,23 +18,23 @@ export default class BinarySearchTree<T> {
     this.root = null;
   }
 
-  insert(val: T): void {
-    if (this.root == null) {
+  insert = (val: T): void => {
+    if (this.root === null) {
       // 如果根节点不存在则直接新建一个节点
       this.root = new TreeNode(val);
     } else {
       // 在根节点中找合适的位置插入子节点
       this.insertNode(this.root, val);
     }
-  }
+  };
 
   // 获取最小值
-  min(): TreeNode<T> | null {
+  min = (): TreeNode<T> | null => {
     return this.minNode(this.root);
-  }
+  };
 
   // 树的最小节点
-  protected minNode(node: TreeNode<T> | null): TreeNode<T> | null {
+  minNode(node: TreeNode<T> | null): TreeNode<T> | null {
     let current = node;
     while (current !== null && current.left !== null) {
       current = current.left;
@@ -52,20 +43,20 @@ export default class BinarySearchTree<T> {
   }
 
   // 获取最大值
-  max(): TreeNode<T> | null {
+  max = (): TreeNode<T> | null => {
     return this.maxNode(this.root);
-  }
+  };
 
   // 树的最大节点
-  private maxNode(node: TreeNode<T> | null): TreeNode<T> | null {
+  private maxNode = (node: TreeNode<T> | null): TreeNode<T> | null => {
     let current = node;
     while (current != null && current.right != null) {
       current = current.right;
     }
     return current;
-  }
+  };
 
-  protected insertNode(node: TreeNode<T>, val: T): void {
+  protected insertNode = (node: TreeNode<T>, val: T): void => {
     const tempNode = node;
     // 如果添加的节点比根节点小,那么继续递归
     if (defaultCompare(tempNode.val, val) < 0) {
@@ -80,64 +71,98 @@ export default class BinarySearchTree<T> {
     } else {
       this.insertNode(tempNode.right, val);
     }
-  }
+  };
+
+  // protected insertNode = (
+  //   node: TreeNode<T> | null,
+  //   val: T
+  // ): TreeNode<T> | null => {
+  //   if (node === null) {
+  //     return new TreeNode(val);
+  //   }
+  //   if (defaultCompare(val, node.val) < 0) {
+  //     node.left = this.insertNode(node.left, val);
+  //   } else if (defaultCompare(val, node.val) > 0) {
+  //     node.right = this.insertNode(node.right, val);
+  //   } else {
+  //     return node; // 重复的键
+  //   }
+  //   return node;
+  // };
 
   /**
    * 搜索二叉树的先序遍历
    * @returns
    */
-  preOrderTraverse(): T[] {
+  preOrderTraverse = (): T[] => {
     return this.preOrderTraverseNode(this.root, []);
-  }
+  };
 
-  protected preOrderTraverseNode(node: TreeNode<T> | null, result: T[]): T[] {
+  protected preOrderTraverseNode = (
+    node: TreeNode<T> | null,
+    result: T[]
+  ): T[] => {
     if (node) {
       result.push(node.val);
       node.left && this.preOrderTraverseNode(node.left, result);
       node.right && this.preOrderTraverseNode(node.right, result);
     }
     return result;
-  }
+  };
 
   /**
    * 搜索二叉树的后序遍历
    * @returns
    */
-  inOrderTraverse(): T[] {
+  inOrderTraverse = (): T[] => {
     return this.inOrderTraverseNode(this.root, []);
-  }
+  };
 
-  protected inOrderTraverseNode(node: TreeNode<T> | null, result: T[]): T[] {
+  protected inOrderTraverseNode = (
+    node: TreeNode<T> | null,
+    result: T[]
+  ): T[] => {
     if (node) {
       node.left && this.inOrderTraverseNode(node.left, result);
       result.push(node.val);
       node.right && this.inOrderTraverseNode(node.right, result);
     }
     return result;
-  }
+  };
 
   /**
    * 搜索二叉树的后序遍历
    * @returns
    */
-  postOrderTraverse(): T[] {
+  postOrderTraverse = (): T[] => {
     return this.postOrderTraverseNode(this.root, []);
-  }
+  };
 
-  protected postOrderTraverseNode(node: TreeNode<T> | null, result: T[]): T[] {
+  protected postOrderTraverseNode = (
+    node: TreeNode<T> | null,
+    result: T[]
+  ): T[] => {
     if (node) {
       node.left && this.postOrderTraverseNode(node.left, result);
       node.right && this.postOrderTraverseNode(node.right, result);
       result.push(node.val);
     }
     return result;
-  }
+  };
 
-  search(val: T): null | TreeNode<T> {
+  /**
+   * 平衡二叉树搜索节点最好的情况是 树分布比较均匀O(lgN) 最坏的情况是退化为链表 O(N)
+   * @param val
+   * @returns
+   */
+  search = (val: T): null | TreeNode<T> => {
     return this.searchNode(this.root, val);
-  }
+  };
 
-  private searchNode(node: TreeNode<T> | null, val: T): null | TreeNode<T> {
+  private searchNode = (
+    node: TreeNode<T> | null,
+    val: T
+  ): null | TreeNode<T> => {
     if (node === null) {
       return null;
     }
@@ -152,15 +177,18 @@ export default class BinarySearchTree<T> {
     }
     // 节点已找到
     return node;
-  }
+  };
 
   // 删除节点函数
-  remove(val: T): void {
+  remove = (val: T): void => {
     this.root = this.removeNode(this.root, val);
-  }
+  };
 
   // eslint-disable-next-line class-methods-use-this
-  protected removeNode(node: TreeNode<T> | null, val: T): null | TreeNode<T> {
+  protected removeNode = (
+    node: TreeNode<T> | null,
+    val: T
+  ): null | TreeNode<T> => {
     let parentNode: null | TreeNode<T> = null;
     let currentNode: null | TreeNode<T> = node;
     let tag: 'left' | 'right' | '' = '';
@@ -187,25 +215,27 @@ export default class BinarySearchTree<T> {
         }
 
         // 如果要删除的节点的左子树不为空 但是右子树为空
-        if (parentNode && currentNode.left == null) {
+        if (parentNode && currentNode.left !== null) {
           parentNode.left = currentNode.left;
           return currentNode.left;
         }
 
         // 如果要删除的节点的右子树不为空 但是左子树为空
-        if (parentNode && currentNode.right == null) {
+        if (parentNode && currentNode.right !== null) {
           parentNode.right = currentNode.right;
           return currentNode.right;
         }
         // 说明删除的节点 同时存在左节点和右节点
         if (parentNode) {
+          // 取得当前右子树的最小节点赋值到当前节点
           const aux = this.minNode(currentNode.right) as TreeNode<T>;
           currentNode.val = aux.val;
+          // 此时存在了相同的节点,然后删除
           currentNode.right = this.removeNode(currentNode.right, aux.val);
           return currentNode;
         }
       }
     }
     return null;
-  }
+  };
 }

@@ -3,9 +3,10 @@
  * @Author: 廉恒凯
  * @Date: 2021-03-11 21:32:50
  * @LastEditors: 廉恒凯
- * @LastEditTime: 2021-03-14 19:52:48
+ * @LastEditTime: 2021-04-05 20:56:15
  * @Description: file content
  */
+import { isDefined } from '@utils/index';
 import TreeNode from '../../treeNode';
 
 /**
@@ -28,7 +29,7 @@ const LDRRecursive = <T,>(node: TreeNode<T>, result: T[]): T[] => {
 const LDR2 = <T,>(node: TreeNode<T>): T[] => {
   const stack: TreeNode<T>[] = [];
   const result: T[] = [];
-  let point: TreeNode<T> | undefined = node;
+  let point: TreeNode<T> | null = node;
   while (stack.length || point) {
     // 先把左节点依次入栈
     while (point) {
@@ -37,7 +38,8 @@ const LDR2 = <T,>(node: TreeNode<T>): T[] => {
     }
     const current = stack.pop();
     current && result.push(current.val);
-    point = current?.right;
+    const value = current?.right;
+    point = isDefined(value) ? value : null;
   }
   return result;
 };
@@ -45,7 +47,7 @@ const LDR2 = <T,>(node: TreeNode<T>): T[] => {
 const LDR = <T,>(node: TreeNode<T>): T[] => {
   const stack: TreeNode<T>[] = [];
   const result: T[] = [];
-  let point: TreeNode<T> | undefined = node;
+  let point: TreeNode<T> | null = node;
   while (stack.length || point) {
     // 先把左节点依次入栈
     if (point) {
@@ -54,7 +56,8 @@ const LDR = <T,>(node: TreeNode<T>): T[] => {
     } else {
       const current = stack.pop();
       current && result.push(current.val);
-      point = current?.right;
+      const value = current?.right;
+      point = isDefined(value) ? value : null;
     }
   }
   return result;

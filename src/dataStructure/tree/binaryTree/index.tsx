@@ -2,11 +2,11 @@
  * @Author: 廉恒凯
  * @Date: 2021-03-11 21:03:40
  * @LastEditors: 廉恒凯
- * @LastEditTime: 2021-03-11 21:16:10
+ * @LastEditTime: 2021-04-05 20:39:54
  * @Description: file content
  */
 /**
- * 二叉搜索树的实现
+ * 二叉树的实现
  */
 import TreeNode from '../treeNode';
 
