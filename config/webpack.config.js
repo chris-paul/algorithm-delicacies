@@ -332,6 +332,7 @@ module.exports = function (webpackEnv) {
         }),
         ...(modules.webpackAliases || {}),
         '@dataStructure': path.resolve(__dirname, '../src/dataStructure'),
+        '@utils': path.resolve(__dirname, '../src/utils'),
       },
       plugins: [
         // Adds support for installing with Plug'n'Play, leading to faster installs and adding

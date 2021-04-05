@@ -18,10 +18,12 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
+    "downlevelIteration":true,
     "jsx": "react-jsx",
     "baseUrl": "./",
     "paths": {
-        "@dataStructure/*": ["src/dataStructure/*"]
+        "@dataStructure/*": ["src/dataStructure/*"],
+        "@utils/*": ["src/utils/*"],
     }
   },
   "include":["./src/**/*"]
