@@ -3,7 +3,7 @@
  * @Author: 廉恒凯
  * @Date: 2021-03-24 20:20:15
  * @LastEditors: 廉恒凯
- * @LastEditTime: 2021-03-24 21:08:10
+ * @LastEditTime: 2021-04-05 22:16:31
  * @Description: file content
  */
 class MinHeap<T> {
@@ -14,22 +14,22 @@ class MinHeap<T> {
   }
 
   // 获取左子节点的位置
-  protected getLeftIndex(index: number): number {
+  protected getLeftIndex = (index: number): number => {
     return 2 * index + 1;
-  }
+  };
 
   // 获取右子节点的位置
-  protected getRightIndex(index: number): number {
+  protected getRightIndex = (index: number): number => {
     return 2 * index + 2;
-  }
+  };
 
   // 获取父节点的位置
-  protected getParentIndex(index: number): number | undefined {
+  protected getParentIndex = (index: number): number | undefined => {
     if (index === 0) {
       return undefined;
     }
     return Math.floor((index - 1) / 2);
-  }
+  };
 
   protected swap(parentIndex: number, index: number): void {
     [this.heap[index], this.heap[parentIndex]] = [
@@ -38,7 +38,7 @@ class MinHeap<T> {
     ];
   }
 
-  protected siftUp(index: number): void {
+  protected siftUp = (index: number): void => {
     // 获取父节点的位置
     const parentIndex = this.getParentIndex(index);
     if (
@@ -48,9 +48,9 @@ class MinHeap<T> {
       this.swap(parentIndex, index);
       this.siftUp(parentIndex);
     }
-  }
+  };
 
-  protected siftDown(index: number): void {
+  protected siftDown = (index: number): void => {
     // 获取父节点的位置
     const leftIndex = this.getLeftIndex(index);
     const rightIndex = this.getLeftIndex(index);
@@ -63,10 +63,10 @@ class MinHeap<T> {
       this.swap(rightIndex, index);
       this.siftDown(rightIndex);
     }
-  }
+  };
 
   /**
-   *先将元素放入堆中
+   * 先将元素放入堆中
    * 堆中的元素一直向前移动 直到父节点小于等于这个插入的值
    * 时间复杂度 O(lgn) n为节点的数目
    * @param value
