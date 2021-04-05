@@ -2,7 +2,7 @@
  * @Author: 廉恒凯
  * @Date: 2021-01-10 21:28:41
  * @LastEditors: 廉恒凯
- * @LastEditTime: 2021-01-27 21:12:12
+ * @LastEditTime: 2021-04-05 17:38:28
  * @Description: file content
  */
 import Stack from './index';
@@ -40,7 +40,7 @@ describe('stack', () => {
   });
 
   test('Attempting to pop when there are no items results in the documented type of failure', () => {
-    expect(stack.pop()).toBe(undefined);
+    expect(stack.pop()).toBeNull();
   });
 
   test('A stack that has an item pushed is non-empty.', () => {
