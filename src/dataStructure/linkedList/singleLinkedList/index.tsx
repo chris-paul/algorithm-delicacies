@@ -2,7 +2,7 @@
  * @Author: 廉恒凯
  * @Date: 2021-01-17 21:03:02
  * @LastEditors: 廉恒凯
- * @LastEditTime: 2021-01-23 17:21:03
+ * @LastEditTime: 2021-04-05 16:13:02
  * @Description: file content
  */
 /* eslint-disable no-param-reassign */
@@ -23,7 +23,7 @@ interface ILinkedList<T> {
   insertInBegin(val: T): LinkedListNode<T>;
   insertAtEnd(val: T): LinkedListNode<T>;
   // deleteNode(node: LinkedListNode<T>): void;
-  deleteNodeByval(val: T): void;
+  deleteNodeByVal(val: T): void;
   traverse(): T[];
   size(): number;
   search(val: T): LinkedListNode<T> | null;
@@ -34,7 +34,12 @@ interface ILinkedList<T> {
 class LinkedList<T> implements ILinkedList<T> {
   private head: LinkedListNode<T> | null = null;
 
-  public insertInBegin(val: T): LinkedListNode<T> {
+  /**
+   * 链表头部插入元素
+   * @param val
+   * @returns
+   */
+  insertInBegin = (val: T): LinkedListNode<T> => {
     const node = new LinkedListNode(val);
     if (!this.head) {
       this.head = node;
@@ -43,9 +48,14 @@ class LinkedList<T> implements ILinkedList<T> {
       this.head = node;
     }
     return node;
-  }
+  };
 
-  public insertAtEnd(val: T): LinkedListNode<T> {
+  /**
+   * 链表尾部插入元素
+   * @param val
+   * @returns
+   */
+  insertAtEnd = (val: T): LinkedListNode<T> => {
     const node = new LinkedListNode(val);
     if (!this.head) {
       this.head = node;
@@ -57,9 +67,14 @@ class LinkedList<T> implements ILinkedList<T> {
       lastNode.next = node;
     }
     return node;
-  }
+  };
 
-  public deleteNodeByval(val: T): void {
+  /**
+   * 根据某一个值 删除某一个节点
+   * @param val
+   * @returns
+   */
+  deleteNodeByVal = (val: T): void => {
     if (!this.head) return;
     const dummy = new LinkedListNode<unknown>(null) as LinkedListNode<T>;
     let pre: LinkedListNode<T> = dummy;
@@ -71,9 +86,13 @@ class LinkedList<T> implements ILinkedList<T> {
     }
     if (cur != null) pre.next = cur.next;
     this.head = dummy.next;
-  }
+  };
 
-  public traverse(): T[] {
+  /**
+   * 获取链表中所有的元素
+   * @returns
+   */
+  traverse = (): T[] => {
     const array: T[] = [];
     if (!this.head) {
       return array;
@@ -84,17 +103,22 @@ class LinkedList<T> implements ILinkedList<T> {
       return node.next ? addToArray(node.next) : array;
     };
     return addToArray(this.head);
-  }
+  };
 
-  public size(): number {
+  size = (): number => {
     return this.traverse().length;
-  }
+  };
 
-  public isEmpty(): boolean {
+  isEmpty = (): boolean => {
     return this.traverse().length === 0;
-  }
+  };
 
-  public search(val: T): LinkedListNode<T> | null {
+  /**
+   * 搜索链表中是否存在该值
+   * @param val
+   * @returns
+   */
+  search = (val: T): LinkedListNode<T> | null => {
     const checkNext = (node: LinkedListNode<T>): LinkedListNode<T> | null => {
       if (node.val === val) {
         return node;
@@ -103,11 +127,15 @@ class LinkedList<T> implements ILinkedList<T> {
     };
 
     return this.head ? checkNext(this.head) : null;
-  }
+  };
 
-  public getHead(): LinkedListNode<T> | null {
+  /**
+   * 获取链表的头部节点
+   * @returns
+   */
+  getHead = (): LinkedListNode<T> | null => {
     return this.head;
-  }
+  };
 }
 
 export { LinkedList, LinkedListNode };

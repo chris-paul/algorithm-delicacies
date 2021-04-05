@@ -64,7 +64,7 @@ describe(' linkedListNode and linkedList ', () => {
       const node = new LinkedList();
       node.insertInBegin(1);
       node.insertAtEnd(2);
-      node.deleteNodeByval(1);
+      node.deleteNodeByVal(1);
       expect(node.traverse()).toEqual([2]);
     });
 
@@ -72,8 +72,8 @@ describe(' linkedListNode and linkedList ', () => {
       const node = new LinkedList();
       node.insertInBegin(1);
       node.insertAtEnd(2);
-      node.deleteNodeByval(1);
-      node.deleteNodeByval(2);
+      node.deleteNodeByVal(1);
+      node.deleteNodeByVal(2);
       expect(node.size()).toBe(0);
     });
 
@@ -82,7 +82,7 @@ describe(' linkedListNode and linkedList ', () => {
       node.insertInBegin(1);
       node.insertAtEnd(2);
       const size = node.size();
-      node.deleteNodeByval(3);
+      node.deleteNodeByVal(3);
       expect(node.size()).toBe(size);
     });
   });
