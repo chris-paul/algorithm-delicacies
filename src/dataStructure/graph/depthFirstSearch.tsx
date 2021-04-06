@@ -20,7 +20,7 @@ const BFSRecursive = (graph: Graph, startnode: nodeType): nodeType[] => {
     if (!arr) return;
     arr.forEach((item: nodeType) => {
       if (!set.has(item)) {
-        BFSRecursive(graph, item);
+        dfs(item);
       }
     });
   };
