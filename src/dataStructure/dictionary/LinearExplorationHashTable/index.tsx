@@ -16,7 +16,7 @@ export default class LinearExplorationHashTable<K, V> extends HashTable<K, V> {
     this.count = 0;
   }
 
-  set(key: K, value: V): boolean {
+  set = (key: K, value: V): boolean => {
     if (key === null || value === null) return false;
     const position = this.hashCode(key);
     const index = this.getIndex(key);
@@ -35,7 +35,7 @@ export default class LinearExplorationHashTable<K, V> extends HashTable<K, V> {
    * @param key
    * @returns
    */
-  private getIndex(key: K): number {
+  private getIndex = (key: K): number => {
     const position = this.hashCode(key);
     let index = position;
     while (this.table[index] !== undefined && this.table[index].key !== key) {
@@ -44,12 +44,12 @@ export default class LinearExplorationHashTable<K, V> extends HashTable<K, V> {
     return index;
   }
 
-  get(key: K): V | undefined {
+  get = (key: K): V | null => {
     const currentIndex = this.getIndex(key);
     return this.table[currentIndex].value;
   }
 
-  remove(key: K): boolean {
+  remove = (key: K): boolean => {
     const index = this.getIndex(key);
     if (this.table[index] === undefined) return false;
     delete this.table[index];
@@ -57,17 +57,17 @@ export default class LinearExplorationHashTable<K, V> extends HashTable<K, V> {
     return true;
   }
 
-  clear(): void {
+  clear = (): void => {
     this.table = [];
     this.count = 0;
   }
 
-  size(): number {
+  size = (): number => {
     return this.count;
   }
 
   // 判断字典中是否包含某个key
-  hasKey(key: K): boolean {
+  hasKey = (key: K): boolean => {
     const currentIndex = this.getIndex(key);
     return !!this.table[currentIndex];
   }
