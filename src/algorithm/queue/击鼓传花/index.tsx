@@ -10,7 +10,7 @@ import CircularQueue from '@dataStructure/queue/circularQueue/index';
 const passFlower = (
   nameList: string[],
   loopNum: number
-): string | undefined => {
+): string | null => {
   const nameLen = nameList.length;
   const queue = new CircularQueue<string>(nameLen);
   for (let i = 0; i < nameLen; i += 1) {
