@@ -10,7 +10,7 @@ import Node from '@dataStructure/tree/treeNode';
 type TreeNode = Node<number> | undefined;
 
 function levelOrder(root: TreeNode): number[][] {
-  // 先进性广度优先遍历把
+  // 先进行广度优先遍历把
   if (!root) return [];
   const queue: [TreeNode, number][] = [[root, 0]];
   const result = [];
