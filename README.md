@@ -90,4 +90,52 @@
 [leetcode 20 有效的括号](https://github.com/chris-paul/algorithm-delicacies/tree/master/src/algorithm/stack/020%E6%9C%89%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7)
 
 
+### 队列
 
+[leetcode 933 最小请求次数](https://github.com/chris-paul/algorithm-delicacies/tree/master/src/algorithm/queue/933最近请求次数/index.tsx)
+
+[击鼓传花](https://github.com/chris-paul/algorithm-delicacies/tree/master/src/algorithm/queue/击鼓传花/index.tsx)
+
+#### 链表
+
+[leetcode 002两数之和](https://github.com/chris-paul/algorithm-delicacies/tree/master/src/algorithm/linkedList/002两数之和/index.tsx)
+
+[leetcode 083删除排序链表中的重复元素](https://github.com/chris-paul/algorithm-delicacies/tree/master/src/algorithm/linkedList/083删除排序链表中的重复元素/index.tsx)
+
+[leetcode 141环形链表](https://github.com/chris-paul/algorithm-delicacies/tree/master/src/algorithm/linkedList/141环形链表/index.tsx)
+
+[leetcode 206链表反转](https://github.com/chris-paul/algorithm-delicacies/tree/master/src/algorithm/linkedList/206链表反转/index.tsx)
+
+[leetcode 234回文链表](https://github.com/chris-paul/algorithm-delicacies/tree/master/src/algorithm/linkedList/234回文链表/index.tsx)
+
+####  集合
+
+[leetcode 349求交集](https://github.com/chris-paul/algorithm-delicacies/tree/master/src/algorithm/set/349求交集/index.tsx)
+
+####  字典
+
+[leetcode 003无重复字符的最长子串](https://github.com/chris-paul/algorithm-delicacies/tree/master/src/algorithm/map/003无重复字符的最长子串/index.tsx)
+
+#### 树
+
+[leetcode 102二叉树的层次遍历](https://github.com/chris-paul/algorithm-delicacies/tree/master/src/algorithm/tree/102二叉树的层次遍历/index.tsx)
+
+[leetcode 104二叉树的最大深度](https://github.com/chris-paul/algorithm-delicacies/tree/master/src/algorithm/tree/104二叉树的最大深度/index.tsx)
+
+[leetcode 111二叉树的最小深度](https://github.com/chris-paul/algorithm-delicacies/tree/master/src/algorithm/tree/111二叉树的最小深度/index.tsx)
+
+#### 搜索
+
+[二分查找](https://github.com/chris-paul/algorithm-delicacies/tree/master/src/algorithm/search/binarySearch/index.tsx)
+
+#### 排序
+
+[冒泡排序](https://github.com/chris-paul/algorithm-delicacies/tree/master/src/algorithm/sort/bubbleSort/index.tsx)
+
+[选择排序](https://github.com/chris-paul/algorithm-delicacies/tree/master/src/algorithm/sort/selectionSort/index.tsx)
+
+[插入排序](https://github.com/chris-paul/algorithm-delicacies/tree/master/src/algorithm/sort/insertionSort/index.tsx)
+
+[归并排序](https://github.com/chris-paul/algorithm-delicacies/tree/master/src/algorithm/sort/mergeSort/index.tsx)
+
+[快速排序](https://github.com/chris-paul/algorithm-delicacies/tree/master/src/algorithm/sort/quickSort/index.tsx)
