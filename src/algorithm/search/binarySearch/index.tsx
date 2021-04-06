@@ -13,11 +13,11 @@
  * @param item
  */
 const binarySearch = <T,>(arr: T[], item: T): number => {
-  // 最小下表和最大下表
+  // 最小下标和最大下标
   let minIndex = 0;
   let maxIndex = arr.length - 1;
   while (minIndex <= maxIndex) {
-    // 中间下表
+    // 中间下标
     const midIndex = Math.floor((minIndex + maxIndex) / 2);
     const element = arr[midIndex];
     if (element > item) {
