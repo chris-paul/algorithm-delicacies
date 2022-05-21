@@ -28,4 +28,22 @@ const validBrackets = (str: string): boolean => {
   return stack.size() === 0;
 };
 
-export default validBrackets;
+const validBracketsByMap = (str: string): boolean => {
+  const map = new Map([
+    ['(', ')'],
+    ['[', ']'],
+    ['{', '}'],
+  ]);
+  const stack = new Stack<string>();
+  for (let i = 0; i < str.length; i += 1) {
+    const item = str[i];
+    if (map.has(item)) stack.push(item);
+    else {
+      const topEle = stack.pop();
+      if (!topEle || map.get(topEle) !== item) return false;
+    }
+  }
+  return stack.size() === 0;
+};
+
+export { validBracketsByMap, validBrackets };
