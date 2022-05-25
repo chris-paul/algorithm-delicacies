@@ -127,6 +127,10 @@
 
 [leetcode 111二叉树的最小深度](https://github.com/chris-paul/algorithm-delicacies/tree/master/src/algorithm/tree/111二叉树的最小深度/index.tsx)
 
+[leetcode 144二叉树先序遍历](https://github.com/chris-paul/algorithm-delicacies/tree/master/src/algorithm/tree/144二叉树先序遍历/index.tsx)
+
+[leetcode 226翻转二叉树](https://github.com/chris-paul/algorithm-delicacies/tree/master/src/algorithm/tree/226翻转二叉树/index.tsx)
+
 #### 搜索
 
 [二分查找](https://github.com/chris-paul/algorithm-delicacies/tree/master/src/algorithm/search/binarySearch/index.tsx)
