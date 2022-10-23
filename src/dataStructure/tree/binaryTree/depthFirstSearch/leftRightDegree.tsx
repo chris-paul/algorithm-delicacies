@@ -47,4 +47,18 @@ const LRD = <T,>(node: TreeNode<T>): T[] => {
   }
   return result.reverse();
 };
-export { LRD, LRDRecursive };
+
+const LRD2 = <T,>(root: TreeNode<T>): T[] => {
+  const stack: TreeNode<T>[] = [root];
+  const res = [];
+  while (stack.length) {
+    const node = stack.pop();
+    if (node) {
+      res.unshift(node.val);
+      node.left && stack.push(node.left);
+      node.right && stack.push(node.right);
+    }
+  }
+  return res;
+};
+export { LRD, LRD2, LRDRecursive };

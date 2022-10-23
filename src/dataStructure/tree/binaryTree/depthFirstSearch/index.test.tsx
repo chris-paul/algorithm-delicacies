@@ -8,7 +8,7 @@
 
 import { DLR, DLRRecursive } from './degreeLeftRight';
 import { LDR, LDR2, LDRRecursive } from './leftDegreeRight';
-import { LRDRecursive, LRD } from './leftRightDegree';
+import { LRDRecursive, LRD, LRD2 } from './leftRightDegree';
 import TreeNode from '../../treeNode';
 // DLR
 
@@ -50,5 +50,6 @@ describe(' DepthFirst Search', () => {
   test('leftRightDegree traversal', () => {
     expect(LRDRecursive(tree, [])).toEqual([4, 5, 2, 7, 6, 8, 3, 1]);
     expect(LRD(tree)).toEqual([4, 5, 2, 7, 6, 8, 3, 1]);
+    expect(LRD2(tree)).toEqual([4, 5, 2, 7, 6, 8, 3, 1]);
   });
 });
