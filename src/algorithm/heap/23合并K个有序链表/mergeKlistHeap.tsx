@@ -1,6 +1,27 @@
+/*
+ * @Author: 廉恒凯
+ * @Date: 2021-03-28 13:20:22
+ * @LastEditors: 廉恒凯
+ * @LastEditTime: 2021-03-28 17:37:25
+ * @Description: file content
+ */
+/**
+ * 使用堆对链表的头节点进行排序
+ * @param lists
+ */
+
 /* eslint-disable class-methods-use-this */
+/*
+ * @Author: 廉恒凯
+ * @Date: 2021-03-24 20:20:15
+ * @LastEditors: 廉恒凯
+ * @LastEditTime: 2021-03-24 21:08:10
+ * @Description: file content
+ */
+import { LinkedListNode } from '@dataStructure/linkedList/singleLinkedList/index';
+
 class MinHeap<T> {
-  protected heap: T[];
+  protected heap: LinkedListNode<T>[];
 
   constructor() {
     this.heap = [];
@@ -36,7 +57,7 @@ class MinHeap<T> {
     const parentIndex = this.getParentIndex(index);
     if (
       parentIndex !== undefined &&
-      this.heap[parentIndex] > this.heap[index]
+      this.heap[parentIndex].val > this.heap[index].val
     ) {
       this.swap(parentIndex, index);
       this.siftUp(parentIndex);
@@ -47,12 +68,18 @@ class MinHeap<T> {
     // 获取父节点的位置
     const leftIndex = this.getLeftIndex(index);
     const rightIndex = this.getLeftIndex(index);
-    if (leftIndex !== undefined && this.heap[leftIndex] < this.heap[index]) {
+    if (
+      leftIndex !== undefined &&
+      this.heap[leftIndex].val < this.heap[index].val
+    ) {
       this.swap(leftIndex, index);
       this.siftDown(leftIndex);
     }
 
-    if (rightIndex !== undefined && this.heap[rightIndex] < this.heap[index]) {
+    if (
+      rightIndex !== undefined &&
+      this.heap[rightIndex].val < this.heap[index].val
+    ) {
       this.swap(rightIndex, index);
       this.siftDown(rightIndex);
     }
@@ -65,7 +92,7 @@ class MinHeap<T> {
    * @param value
    * @returns
    */
-  insert(value: T): boolean {
+  insert(value: LinkedListNode<T>): boolean {
     if (value != null) {
       this.heap.push(value);
       this.siftUp(this.heap.length - 1);
@@ -80,34 +107,45 @@ class MinHeap<T> {
    * 时间复杂度 O(lgn) n为节点的数目
    * @param value
    */
-  pop(): void {
+  pop(): LinkedListNode<T> | undefined {
     if (this.heap.length === 0) return;
     const value = this.heap.pop();
     if (value) {
       this.heap[0] = value;
       this.siftDown(0);
     }
+    // eslint-disable-next-line consistent-return
+    return value;
   }
 
   size(): number {
     return this.heap.length;
   }
-
-  peek() {
-    return this.heap[0];
-  }
 }
 /**
- * O(Nlog(k))
- * 空间复杂度 O(k)
+ *
+ * @param lists 时间复杂度都是Nlogk k是堆的大小 N是节点的总数
+ * @returns
  */
-function findKthLargest(nums: number[], k: number): number {
-  const minHeap = new MinHeap<number>();
-  nums.forEach((num) => {
-    minHeap.insert(num);
-    if (minHeap.size() > k) minHeap.pop();
+const mergeKListSort = <T,>(
+  lists: LinkedListNode<T>[]
+): LinkedListNode<T> | null => {
+  if (lists.length === 0) return null;
+  if (lists.length === 1) return lists[0];
+  // 先将当前链表进入堆
+  const heap = new MinHeap<T>();
+  lists.forEach((item) => {
+    if (item) heap.insert(item);
   });
-  return minHeap.peek();
-}
+  const res = new LinkedListNode<T>(0 as T);
+  let p = res;
+  while (heap.size()) {
+    const n = heap.pop() as LinkedListNode<T>;
+    p.next = n;
+    p = p.next;
+    if (n.next) heap.insert(n.next);
+  }
+  return res.next;
+};
 
-export default findKthLargest;
+export default mergeKListSort;

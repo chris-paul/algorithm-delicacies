@@ -108,6 +108,8 @@
 
 [leetcode 234回文链表](https://github.com/chris-paul/algorithm-delicacies/tree/master/src/algorithm/linkedList/234回文链表/index.tsx)
 
+[leetcode 237删除链表中的某一个节点](https://github.com/chris-paul/algorithm-delicacies/tree/master/src/algorithm/linkedList/237删除链表中的某一个节点/index.tsx)
+
 ####  集合
 
 [leetcode 349求交集](https://github.com/chris-paul/algorithm-delicacies/tree/master/src/algorithm/set/349求交集/index.tsx)
@@ -130,6 +132,21 @@
 [leetcode 144二叉树先序遍历](https://github.com/chris-paul/algorithm-delicacies/tree/master/src/algorithm/tree/144二叉树先序遍历/index.tsx)
 
 [leetcode 226翻转二叉树](https://github.com/chris-paul/algorithm-delicacies/tree/master/src/algorithm/tree/226翻转二叉树/index.tsx)
+
+#### 堆
+
+[leetcode 215数组中的第K个最大元素](https://github.com/chris-paul/algorithm-delicacies/tree/master/src/algorithm/heap/215数组中的第K个最大元素/index.tsx)
+
+[leetcode 347前k个高频元素](https://github.com/chris-paul/algorithm-delicacies/tree/master/src/algorithm/heap/347前k个高频元素/index.tsx)
+
+[leetcode 23合并K个有序链表](https://github.com/chris-paul/algorithm-delicacies/tree/master/src/algorithm/heap/23合并K个有序链表/index.tsx)
+
+#### 图
+
+[对象节点按层级输出](https://github.com/chris-paul/algorithm-delicacies/tree/master/src/algorithm/graph/对象节点按层级输出/index.tsx)
+
+
+[对象数组转换为树结构](https://github.com/chris-paul/algorithm-delicacies/tree/master/src/algorithm/graph/对象数组转换为树结构/index.tsx)
 
 #### 搜索
 
