@@ -1,0 +1,55 @@
+class CircleQueue {
+    constructor(k) {
+        this.data = [];
+        this.tail = 0;
+        this.head = 0;
+        this.len = k;
+        this.count = 0;
+    }
+
+    isFull() {
+        return this.count === this.len;
+    }
+
+    isEmpty() {
+        this.data.length === 0;
+    }
+
+    enQueue(num) {
+        if(this.isFull()) return false;
+        this.data.push(num);
+        this.tail = (this.tail + 1) % this.len;
+        this.count ++;
+    }
+
+    deQueue() {
+        if(this.isEmpty()) return undefined;
+        const item = this.data[this.head];
+        this.count --;
+        this.head = (this.head + 1) % this.len;
+        return item;
+    }
+
+    size() {
+        return this.count;
+    }
+}
+
+const queue = new CircleQueue(5);
+queue.enQueue("lhk");
+queue.enQueue("zxx")
+queue.enQueue("lhd")
+queue.enQueue("lk")
+queue.enQueue("xao")
+console.info(queue.data);
+console.info(queue.isFull())
+let count = 1;
+while(queue.size() > 1) {
+    if(count === 2) {
+        count = 1;
+        console.info('淘汰了',queue.deQueue())
+    } else {
+        count ++;
+        queue.enQueue(queue.deQueue())
+    }
+}

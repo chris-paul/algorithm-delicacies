@@ -19,7 +19,7 @@
  * 合并两个排序数组
  * @param left
  * @param right
- * @returns
+ * @returns O(n) 的时间复杂度
  */
 const merge = <T,>(left: T[], right: T[]): T[] => {
   const resArr = [];

@@ -38,8 +38,6 @@ const transfer = (param: Item[]) => {
     graph[item.pid].push(item);
   });
   return graph;
-  console.info(graph);
-  //   print(graph, 0);
 };
 
 const print = (graph: Graph, startId: number) => {
